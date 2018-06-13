@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp.csproj", "{4E3554E9-E515-44D0-ABBC-C025D437EB2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorkerUserControls", "..\BackgroundWorkerUserControls\BackgroundWorkerUserControls.csproj", "{DE5752FB-9BDC-4D7F-B842-D0A57E5A6D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubenhak.Common.WPF", "..\..\src_WPF_AnimatableButton\AnimatableButton\Rubenhak.Common.WPF\Rubenhak.Common.WPF.csproj", "{B4CBA25C-F965-4673-8B72-863495E0ACB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E3554E9-E515-44D0-ABBC-C025D437EB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3554E9-E515-44D0-ABBC-C025D437EB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3554E9-E515-44D0-ABBC-C025D437EB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3554E9-E515-44D0-ABBC-C025D437EB2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5752FB-9BDC-4D7F-B842-D0A57E5A6D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5752FB-9BDC-4D7F-B842-D0A57E5A6D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5752FB-9BDC-4D7F-B842-D0A57E5A6D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5752FB-9BDC-4D7F-B842-D0A57E5A6D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4CBA25C-F965-4673-8B72-863495E0ACB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4CBA25C-F965-4673-8B72-863495E0ACB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4CBA25C-F965-4673-8B72-863495E0ACB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4CBA25C-F965-4673-8B72-863495E0ACB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

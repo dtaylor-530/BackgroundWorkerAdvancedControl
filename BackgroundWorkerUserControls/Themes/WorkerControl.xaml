@@ -1,0 +1,155 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BackgroundWorkerUserControls.Controls"
+                             xmlns:ruben="clr-namespace:Rubenhak.Common.WPF;assembly=Rubenhak.Common.WPF"
+        xmlns:converters="clr-namespace:Converters"
+                         xmlns:controls="clr-namespace:BackgroundWorkerUserControls.Controls">
+
+
+    <!--<Style TargetType="{x:Type local:ImageButton}" BasedOn="{x:Null}">
+        <Setter Property="Template" Value="{StaticResource ImageButtonTemplate}" />
+    </Style>
+  
+    <Style x:Key="TestImageButton" TargetType="{x:Type local:ImageButton}" BasedOn="{StaticResource {x:Type local:ImageButton}}">
+        <Setter Property="NormalImage" Value="/BackgroundWorkerUserControls;component/Images/Pause.png"/>
+    </Style>-->
+
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/BackgroundWorkerUserControls;component/Themes/Slider.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style x:Key="WorkerBar" TargetType="{x:Type local:WorkerControl}">
+        <Style.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"></BooleanToVisibilityConverter>
+            <converters:InverseBooleanToVisibilityConverter  x:Key="InvBoolToVis"></converters:InverseBooleanToVisibilityConverter>
+        </Style.Resources>
+
+        <Setter Property="Margin" Value="3"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WorkerControl}" x:Name="PART_Control">
+
+
+                    <Grid>
+
+
+
+                        <controls:ProgressTimeBar Width="250" Value="{TemplateBinding Value}" Maximum="100" x:Name="ProgressTimeBar"></controls:ProgressTimeBar>
+
+
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--<ToggleButton x:Name="toggle" Grid.Column="0" />-->
+
+
+
+
+                            <local:ToggleButtonEx x:Name="toggle"  
+                                                  Grid.Column="0" 
+                                                Margin="15,0,15,0"
+                                                FrontImageSource="/BackgroundWorkerUserControls;component/Images/Settings.png" 
+                                                BackImageSource="/BackgroundWorkerUserControls;component/Images/bar-chart.png" />
+
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Horizontal" 
+                                                                Visibility="{Binding ElementName=toggle,
+                                        Path=IsChecked,
+                                        Converter={StaticResource InvBoolToVis}}"
+                                       >
+
+
+
+                                <local:ToggleButtonEx x:Name="PlayPause"          
+                                                Margin="15,0,15,0"
+                                                FrontImageSource="/BackgroundWorkerUserControls;component/Images/Play.png" 
+                                                BackImageSource="/BackgroundWorkerUserControls;component/Images/Pause.png"
+                                                      >
+
+                                </local:ToggleButtonEx>
+
+
+                                <local:ImageButton x:Name="Cancel"  
+                                               NormalImage="/BackgroundWorkerUserControls;component/Images/Stop.png"
+                                                HoverImage="/BackgroundWorkerUserControls;component/Images/Stop.png"
+                                                PressedImage="/BackgroundWorkerUserControls;component/Images/Stop.png"
+                                                DisabledImage="/BackgroundWorkerUserControls;component/Images/Stop.png"
+                                               />
+
+
+
+
+                            </StackPanel>
+
+
+                            <StackPanel  Grid.Column="1"
+                                         Orientation="Horizontal" 
+                                        x:Name= "Stack2"
+                                                           Visibility="{Binding ElementName=toggle,
+                                        Path=IsChecked,
+                                        Converter={StaticResource BoolToVis}}"
+                                       >
+
+                                <!--<StackPanel.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <Trigger Property="StackPanel.Visibility" Value="true">
+                                                <Setter TargetName="toggle" Property="local:ToggleButtonEx.IsChecked" Value="true" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>-->
+
+                                <Slider x:Name="DelaySlider" 
+                                        Style="{StaticResource ResourceKey=SliderStyle}"
+                                        Maximum="3000"
+                                        Value="1000"
+                                        Width="100"
+                                        IsSnapToTickEnabled="True"
+                                        Ticks="100,200,300,500,1000,2000"                                                                                     
+                                        Orientation="Horizontal"  
+                                        AutoToolTipPrecision="100" 
+                                        TickPlacement="BottomRight"
+
+                                                
+                                        />
+
+
+
+                                <!--        IsMoveToPointEnabled="True"  AutoToolTipPlacement="BottomRight"-->
+
+
+
+
+                            </StackPanel>
+
+
+
+                            <Grid >
+
+
+
+
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+</ResourceDictionary>
