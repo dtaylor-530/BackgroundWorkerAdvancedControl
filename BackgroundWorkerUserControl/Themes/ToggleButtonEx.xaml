@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:BackgroundWorkerUserControl.Controls">
+                    xmlns:controls="clr-namespace:BackgroundWorkerControl.Controls">
 
 
 
@@ -16,7 +16,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <!--Original setter (did work) <Setter TargetName="PART_Image" Property="Source" Value="/BackgroundWorkerUserControl;component/Images/Pause.png" />-->
+                            <!--Original setter (did work) <Setter TargetName="PART_Image" Property="Source" Value="/BackgroundWorkerControl;component/Images/Pause.png" />-->
                             <Setter TargetName="PART_Image" 
                                     Property="Source" 
                                     Value="{Binding BackImageSource, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -24,7 +24,7 @@
                         </Trigger>
                         
                         <!--<Trigger Property="IsEnabled" Value="False">
-                            --><!--Original setter (did work) <Setter TargetName="PART_Image" Property="Source" Value="/BackgroundWorkerUserControl;component/Images/Pause.png" />--><!--
+                            --><!--Original setter (did work) <Setter TargetName="PART_Image" Property="Source" Value="/BackgroundWorkerControl;component/Images/Pause.png" />--><!--
                             <Setter TargetName="PART_Image" 
                                     Property="Source" 
                                     Value="0.5" />

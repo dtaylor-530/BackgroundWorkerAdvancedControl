@@ -10,7 +10,7 @@ using System.Windows.Markup;
 using System.Windows.Controls.Primitives;
 using System.Runtime.InteropServices;
 
-namespace BackgroundWorkerUserControl.Controls
+namespace BackgroundWorkerControl.Controls
 {
     [ContentProperty("Content")]
     public class WorkerControl : Control,INotifyPropertyChanged
@@ -62,7 +62,7 @@ namespace BackgroundWorkerUserControl.Controls
             cancelButton.IsEnabled = false;
             playPauseButton.Click -= PlayPauseButton_Click;
                     playPauseButton.IsChecked = false;
-            SetValue(WorkerStateProperty, State.Stopped);
+            SetValue(WorkerStateProperty, null);
             playPauseButton.Click += PlayPauseButton_Click;
        
             // playPauseButton.IsChecked = true;
@@ -74,7 +74,7 @@ namespace BackgroundWorkerUserControl.Controls
             cancelButton.IsEnabled = true;
           
             //ProgressTimeBar.ValueProperty
-            SetValue(WorkerStateProperty, (sender as ToggleButtonEx).IsChecked == true ? State.Running : State.Paused);
+            SetValue(WorkerStateProperty, (sender as ToggleButtonEx).IsChecked == true ? true : false);
         }
 
         //private void Chkbx_Checked(object sender, RoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace BackgroundWorkerUserControl.Controls
        
 
 
-            Uri resourceLocater = new Uri("/BackgroundWorkerUserControl;component/Themes/WorkerControl.xaml", System.UriKind.Relative);
+            Uri resourceLocater = new Uri("/BackgroundWorkerControl;component/Themes/WorkerControl.xaml", System.UriKind.Relative);
 
             
             ResourceDictionary resourceDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
@@ -150,9 +150,9 @@ namespace BackgroundWorkerUserControl.Controls
         /// Gets or sets the WorkerState.
         /// </summary>
         /// <value>The WorkerState.</value>
-        public State WorkerState
+        public bool? WorkerState
         {
-            get { return (State)GetValue(WorkerStateProperty); }
+            get { return (bool?)GetValue(WorkerStateProperty); }
             set { SetValue(WorkerStateProperty, value); }
         }
 
@@ -164,14 +164,14 @@ namespace BackgroundWorkerUserControl.Controls
         /// </summary>
         private static void OnWorkerStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as WorkerControl).WorkerState = (State)e.NewValue;
+            (d as WorkerControl).WorkerState = (bool?)e.NewValue;
             (d as WorkerControl). RaisePropertyChanged("WorkerState");
         }
 
 
         public static readonly DependencyProperty WorkerStateProperty =
-            DependencyProperty.Register("WorkerState", typeof(State), typeof(WorkerControl),
-                new FrameworkPropertyMetadata(State.Stopped, new PropertyChangedCallback(OnWorkerStateChanged)));
+            DependencyProperty.Register("WorkerState", typeof(bool?), typeof(WorkerControl),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnWorkerStateChanged)));
 
 
 

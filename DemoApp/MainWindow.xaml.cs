@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Custom.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -24,93 +25,37 @@ namespace DemoApp
     {
 
 
-        private Random Randomer = new Random();
+
         private MainWindowViewModel windowViewModel;
         public MainWindow()
         {
             InitializeComponent();
-            windowViewModel = new MainWindowViewModel(_backgroundWorker_RunWorkerCompleted, _backgroundWorker_ProgressChanged);
-
-            this.DataContext = windowViewModel.BackgroundWorkerEx;
+            windowViewModel = new MainWindowViewModel();
+            windowViewModel.Progress += ProgressChanged ;
+            windowViewModel.Clear += Clear;
+            this.DataContext = windowViewModel;
 
         }
 
-
-
-
-        private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Clear(object sender, EventArgs e)
         {
-            TimeSpan ts = windowViewModel.BackgroundWorkerEx.TimeSpan;
-          
- 
-
-            string elapsedTime = "RunTime " + string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,   ts.Milliseconds / 10);
-
-            // Validate if the process is cancelled
-            if (e.Cancelled)
-            {
-                // Tell the user that the process was cancelled
-                MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCancelled) + elapsedTime,
-                    string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCancelledTitle)
-                    );
-            }
-            else
-            {
-
-
-
-                // Tell the user that the process completed normally
-                MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCompleted) + elapsedTime,
-                    string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCompletedTitle)
-                    );
-            }
-
-
 
             MainCanvas.Children.Clear();
 
-      
         }
 
 
-
-
-        private void _backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void ProgressChanged(object sender, ProgressChangedEventArgs<WorkerArgument> e)
         {
-
-            Firefly CurrentFirefly = new Firefly();
-            //CurrentFirefly.Speed = Randomer.Next(1, 3);
-            CurrentFirefly.Body = new Ellipse();
-            CurrentFirefly.Body.Margin = new Thickness(Randomer.Next(10, (int)MainCanvas.ActualWidth - 10),
-                                                       Randomer.Next(10, (int)MainCanvas.ActualHeight - 10),
-                                                       0, 0);
-            CurrentFirefly.Body.Fill = Brushes.Black;
-            CurrentFirefly.Body.Height = MainCanvas.ActualHeight / 4;
-            CurrentFirefly.Body.Width = 1.5 * CurrentFirefly.Body.Height;
-            MainCanvas.Children.Add(CurrentFirefly.Body);
-
-
-
+            FireflyHelper.Add(MainCanvas, e.UserState.Rand);
         }
 
 
-
-
-
     }
 
 
 
 
-
-
-
-    class Firefly
-    {
-        public Ellipse Body { get; set; }
-        //public int Speed { get; set; }
-    }
 
 }
 

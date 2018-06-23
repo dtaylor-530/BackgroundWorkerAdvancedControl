@@ -4,16 +4,10 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
-using BackgroundWorkerUserControl;
+using BackgroundWorkerControl;
 using System.Diagnostics;
-
-
-/* BackgroundWorker is ...
- *   ... meant to model a single task that you'd want to perform in the background, on a thread pool thread.  
- *   async/await is a syntax for asynchronously awaiting on asynchronous operations. 
- *   Those operations may or may not use a thread pool thread or even use any other thread. So, they're apples and oranges.
- */
-
+using BackgroundWorkerWrapper;
+using System.ComponentModel.Custom.Generic;
 
 namespace DemoApp
 {
@@ -21,56 +15,93 @@ namespace DemoApp
     public  class MainWindowViewModel
     {
 
-        public BackgroundWorkerUserControl.BackgroundWorkerEx<WorkerArgument> BackgroundWorkerEx { get; set; }
+        //public BackgroundWorkerEx<WorkerArgument> Worker { get; set; }
 
+        public event EventHandler<EventArgs> Clear;
+        public event EventHandler<ProgressChangedEventArgs<WorkerArgument>> Progress;
+
+        public WorkerViewModel<WorkerArgument> WorkerViewModel { get;}
 
         private static int iterations = 10;
         public int Iterations { get { return iterations; } }
 
-        public MainWindowViewModel(Action<object , RunWorkerCompletedEventArgs> completedEvent,Action<object , ProgressChangedEventArgs> progressEvent)
+        public MainWindowViewModel()
         {
-            BackgroundWorkerEx = new BackgroundWorkerEx<WorkerArgument>();
-            BackgroundWorkerEx.Task( 10,  onProgressChanged:progressEvent, onFinished:completedEvent) ;
-
-            BackgroundWorkerEx.MainMethod = MainWork;
-            BackgroundWorkerEx.PreliminaryMethod = PreliminaryWork;
-
+           var Worker = new BackgroundWorkerEx<WorkerArgument>(10, MainWork, PreliminaryWork,  onProgressChanged: _backgroundWorker_ProgressChanged, onFinished: _backgroundWorker_RunWorkerCompleted) ;
+            WorkerViewModel = new WorkerViewModel<WorkerArgument>(Worker);
+        
         }
-
-
-        //private void onProgressChanged(object sender, ProgressChangedEventArgs arg)
-        //{
-        //     WorkerArgument userState = arg.UserState as WorkerArgument;
-        //     Console.WriteLine(string.Format("Progress: {0}; Calculation result: {1}", arg.ProgressPercentage, userState.CalculationResult));
-        //}
-
-       
-        //_worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-        //_worker.ProgressChanged += new ProgressChangedEventHandler(onProgressChanged);
-        //_worker.WorkerReportsProgress = true;
-        //_worker.RunWorkerAsync(new WorkerArgument { CalculationResult=-1, BaseNumber = 10 });
 
 
         public WorkerArgument MainWork(int arg)
         {
-            return new WorkerArgument() { BaseNumber = arg, CalculationResult = 2 };
+
+            var x = new Random();
+            var y = x.NextDouble();
+            return new WorkerArgument() { BaseNumber = arg, Rand = y };
         }
 
         public  object PreliminaryWork() { return null; }
 
-        
 
 
+
+
+        private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs<WorkerArgument> e)
+        {
+            //TimeSpan ts = (sender as BackgroundWorkerEx).TimeSpan;
+            WorkerViewModel.State = null;
+
+            Helper.CreateMessage(default(TimeSpan),e.Cancelled);
+
+            Clear?.Invoke(this, e);
+        }
+
+
+
+        private void _backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs<WorkerArgument> e)
+        {
+            WorkerViewModel.Progress = e.ProgressPercentage;
+            Progress?.Invoke(this, e);
+
+        }
+
+
+      
     }
 
 
 
-    public class WorkerArgument
+
+
+
+
+    static class Helper
     {
-        public int BaseNumber { get; set; }
-        public double CalculationResult { get; set; }
-    }
 
+        public static  void CreateMessage(TimeSpan ts, bool cancelled)
+        {
+            string elapsedTime = "RunTime " + string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+
+            // Validate if the process is cancelled
+            if (cancelled)
+            {
+                // Tell the user that the process was cancelled
+                MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCancelled) + elapsedTime,
+                    string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCancelledTitle)
+                    );
+            }
+            else
+            {
+                // Tell the user that the process completed normally
+                MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCompleted) + elapsedTime,
+                    string.Format(CultureInfo.CurrentCulture, Properties.Resources.ProcessCompletedTitle)
+                    );
+            }
+        }
+
+    }
 
 
 }

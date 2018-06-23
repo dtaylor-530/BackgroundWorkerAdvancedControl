@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 
-        xmlns:ruben="clr-namespace:Rubenhak.Common.WPF;assembly=Rubenhak.Common.WPF"
-        xmlns:wcontrol="clr-namespace:BackgroundWorkerUserControl.Controls;assembly=BackgroundWorkerUserControl"
+  
+        xmlns:wcontrol="clr-namespace:BackgroundWorkerControl.Controls;assembly=BackgroundWorkerControl"
         xmlns:local="clr-namespace:DemoApp"
 
         mc:Ignorable="d"
@@ -16,9 +16,9 @@
         </bwuc:WorkerControl>-->
         <ToolBar DockPanel.Dock="Top"  Height="45" Margin="0">
 
-            <wcontrol:WorkerControl WorkerState="{Binding State,Mode=TwoWay}"
+            <wcontrol:WorkerControl DataContext="{Binding WorkerViewModel}" WorkerState="{Binding State,Mode=TwoWay}"
                                     Delay="{Binding Delay,Mode=TwoWay}"
-                                     Value="{Binding CurrentProgress}" 
+                                     Value="{Binding Progress}" 
                                   />
 
         </ToolBar>
@@ -26,14 +26,11 @@
 
 
 
-        <StatusBar   DockPanel.Dock="Bottom"     >
+        <StatusBar   DockPanel.Dock="Bottom"     />
 
-
-
-       
-            <StatusBarItem >
+        <!--<StatusBarItem >
                 <StatusBarItem.Resources>
-                    <!-- Built in Converter -->
+                    --><!-- Built in Converter --><!--
                     <BooleanToVisibilityConverter x:Key="BoolToVis" />
                 </StatusBarItem.Resources>
              
@@ -58,7 +55,7 @@
                              Width="200"/>
             </StatusBarItem>
                     <StatusBarItem  Grid.Column="2">
-                 <!--<ruben:AnimatableButton/>-->
+                 --><!--<ruben:AnimatableButton/>
             </StatusBarItem>
             </Grid>
             </StatusBarItem>
@@ -78,7 +75,7 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-        </StatusBar>
+        </StatusBar>-->
 
         <Canvas x:Name="MainCanvas" DockPanel.Dock="Top" >
             

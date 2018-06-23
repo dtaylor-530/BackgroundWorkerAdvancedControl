@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackgroundWorkerControl
+namespace DemoApp
 {
-    public class Class1
+    public class WorkerArgument
     {
+        public int BaseNumber { get; set; }
+        public double Rand { get; set; }
     }
+
 }

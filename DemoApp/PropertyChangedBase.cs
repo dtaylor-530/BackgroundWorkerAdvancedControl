@@ -8,14 +8,6 @@ using System.Windows.Input;
 
 namespace DemoApp
 {
-    //public partial class MainWindowViewModel  :BackgroundWorkerEx
-
-    //{ 
-
-    //}
-
-
-
     /// <summary>
     /// View Model Base
     /// </summary>

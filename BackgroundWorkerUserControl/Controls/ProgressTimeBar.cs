@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 
-namespace BackgroundWorkerUserControl.Controls
+namespace BackgroundWorkerControl.Controls
 {
 
 
@@ -131,7 +131,7 @@ namespace BackgroundWorkerUserControl.Controls
 
         public ProgressTimeBar() : base()
         {
-            Uri resourceLocater = new Uri("/BackgroundWorkerUserControl;component/Themes/ProgressTimeBar.xaml", System.UriKind.Relative);
+            Uri resourceLocater = new Uri("/BackgroundWorkerControl;component/Themes/ProgressTimeBar.xaml", System.UriKind.Relative);
 
             ResourceDictionary resourceDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
             oStyle = resourceDictionary["ProgressTimeBarStyle"] as Style;

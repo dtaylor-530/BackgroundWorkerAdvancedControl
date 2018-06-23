@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
-namespace BackgroundWorkerUserControl.Controls
+namespace BackgroundWorkerControl.Controls
 {
     public class ToggleButtonEx:ToggleButton
     {
@@ -26,7 +26,7 @@ namespace BackgroundWorkerUserControl.Controls
 
         public ToggleButtonEx() : base()
         {
-            Uri resourceLocater = new Uri("/BackgroundWorkerUserControl;component/Themes/ToggleButtonEx.xaml", System.UriKind.Relative);
+            Uri resourceLocater = new Uri("/BackgroundWorkerControl;component/Themes/ToggleButtonEx.xaml", System.UriKind.Relative);
 
             ResourceDictionary resourceDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
             oStyle = resourceDictionary["ToggleExStyle"] as Style;

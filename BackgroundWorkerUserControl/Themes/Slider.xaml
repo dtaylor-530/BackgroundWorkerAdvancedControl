@@ -56,7 +56,7 @@
       Name="TopTick"
       SnapsToDevicePixels="True" 
       Placement="Top"
-      Fill="{StaticResource GlyphBrush}"
+      Fill="{StaticResource GlyphColor}"
       Height="4"
       Visibility="Collapsed" />
             <Border 
@@ -117,7 +117,7 @@
       Name="TopTick"
       SnapsToDevicePixels="True" 
       Placement="Left"
-      Fill="{StaticResource GlyphBrush}"
+      Fill="{StaticResource GlyphColor}"
       Width="4"
       Visibility="Collapsed" />
             <Border 

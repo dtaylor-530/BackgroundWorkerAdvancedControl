@@ -7,7 +7,7 @@ using System.Windows;
 
 using System.Windows.Media;
 
-namespace BackgroundWorkerUserControl.Controls
+namespace BackgroundWorkerControl.Controls
 {
 
    // Based on https://stackoverflow.com/questions/2491941/wpf-tristate-image-button/3676177#3676177
@@ -22,7 +22,7 @@ namespace BackgroundWorkerUserControl.Controls
         {
             //DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageButton), new FrameworkPropertyMetadata(typeof(ImageButton)));
 
-            Uri resourceLocater = new Uri("/BackgroundWorkerUserControl;component/Themes/ImageButton.xaml", System.UriKind.Relative);
+            Uri resourceLocater = new Uri("/BackgroundWorkerControl;component/Themes/ImageButton.xaml", System.UriKind.Relative);
 
             ResourceDictionary resourceDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
             sStyle = resourceDictionary["ImageButtonStyle"] as Style;

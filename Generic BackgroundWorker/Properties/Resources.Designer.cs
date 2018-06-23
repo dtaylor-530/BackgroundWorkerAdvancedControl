@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DemoApp.Properties {
+namespace GenericBackgroundWorker.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DemoApp.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DemoApp.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GenericBackgroundWorker.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,42 +57,6 @@ namespace DemoApp.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Process was cancelled..
-        /// </summary>
-        internal static string ProcessCancelled {
-            get {
-                return ResourceManager.GetString("ProcessCancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Process Cancelled.
-        /// </summary>
-        internal static string ProcessCancelledTitle {
-            get {
-                return ResourceManager.GetString("ProcessCancelledTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Process completed normally..
-        /// </summary>
-        internal static string ProcessCompleted {
-            get {
-                return ResourceManager.GetString("ProcessCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Process Completed.
-        /// </summary>
-        internal static string ProcessCompletedTitle {
-            get {
-                return ResourceManager.GetString("ProcessCompletedTitle", resourceCulture);
             }
         }
     }
