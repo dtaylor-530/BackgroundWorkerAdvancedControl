@@ -5,85 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 
   
-        xmlns:wcontrol="clr-namespace:BackgroundWorkerControl.Controls;assembly=BackgroundWorkerControl"
+     
         xmlns:local="clr-namespace:DemoApp"
 
         mc:Ignorable="d"
         Title="MainWindow" >
-    <DockPanel>
-        <!--<bwuc:WorkerControl DockPanel.Dock="Top" Height="30">
 
-        </bwuc:WorkerControl>-->
-        <ToolBar DockPanel.Dock="Top"  Height="45" Margin="0">
+    <TabControl>
+        <TabItem Header="Main">
 
-            <wcontrol:WorkerControl DataContext="{Binding WorkerViewModel}" WorkerState="{Binding State,Mode=TwoWay}"
-                                    Delay="{Binding Delay,Mode=TwoWay}"
-                                     Value="{Binding Progress}" 
-                                  />
+            <local:MainUserControl></local:MainUserControl>
+        </TabItem>
+        <TabItem Header="Secondary">
 
-        </ToolBar>
+            <local:SecondaryUserControl></local:SecondaryUserControl>
+        </TabItem>
 
 
+    </TabControl>
 
-
-        <StatusBar   DockPanel.Dock="Bottom"     />
-
-        <!--<StatusBarItem >
-                <StatusBarItem.Resources>
-                    --><!-- Built in Converter --><!--
-                    <BooleanToVisibilityConverter x:Key="BoolToVis" />
-                </StatusBarItem.Resources>
-             
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-    
-
-                <StatusBarItem Grid.Column="0">
-                    <TextBlock Name="lblProgressStatus" Margin="2">00:00:00</TextBlock>
-                </StatusBarItem>
-                    <StatusBarItem Grid.Column="1">
-            <ProgressBar Name="ProgressBar" 
-                             Value="{Binding CurrentProgress, Mode=OneWay}" 
-                             Visibility="{Binding IsBusy, Mode=OneWay,Converter={StaticResource BoolToVis} }"
-                             HorizontalAlignment="Center" 
-                             Height="26" Margin="2"
-                             VerticalAlignment="Center"
-                             Width="200"/>
-            </StatusBarItem>
-                    <StatusBarItem  Grid.Column="2">
-                 --><!--<ruben:AnimatableButton/>
-            </StatusBarItem>
-            </Grid>
-            </StatusBarItem>
-       
-       
-        </StatusBar>
-        
-        <StatusBar  DockPanel.Dock="Bottom"  >
-
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
-        </StatusBar>-->
-
-        <Canvas x:Name="MainCanvas" DockPanel.Dock="Top" >
-            
-        </Canvas>
-
-
-
-
-
-    </DockPanel>
 </Window>

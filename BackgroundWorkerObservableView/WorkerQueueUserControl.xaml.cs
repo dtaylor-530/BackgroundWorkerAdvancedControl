@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Custom.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,28 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DemoApp
+namespace BackgroundWorkerObservableView
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SecondaryUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WorkerQueueUserControl : UserControl
     {
-
-        public MainWindow()
+        public WorkerQueueUserControl()
         {
             InitializeComponent();
-
-
+   
         }
-
-
-
     }
-
-
-
-
-
 }
-

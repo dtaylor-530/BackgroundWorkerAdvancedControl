@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="BackgroundWorkerObservableView.WorkerQueueUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="300">
+
+
+
+            <UniformGrid MinHeight="100" Columns="2">
+                <Label Content="Queued Items" Margin="10"/>
+                <TextBlock Text="{Binding QueuedItems.Value,Mode=OneWay}" Margin="10"/>
+                
+                <Label Content="Count" Margin="10"/>
+            
+            <!--<UniformGrid Rows="1">-->
+                <TextBlock Text="{Binding Count.Value,Mode=OneWay}" Margin="10"/>
+                <!--<TextBlock Text="out of" Margin="10"/>
+               <TextBlock Text="{Binding Iterations,Mode=OneWay}"  Margin="10"/>-->
+            <!--</UniformGrid>-->
+            <Label Content="Cancellation Time" Margin="10"/>
+            <UniformGrid Rows="1">
+                <TextBlock Text="{Binding CancellationTime.Value,Mode=OneWay}" Margin="10"/>
+                <TextBlock Text="Seconds" Margin="10"/>
+            </UniformGrid>
+            <Label Content="Time" Margin="10"/>
+            <UniformGrid Rows="1">
+                <TextBlock Text="{Binding Time.Value ,Mode=OneWay}" Margin="10"/>
+                <TextBlock Text="MilliSeconds" Margin="10"/>
+            </UniformGrid>
+            <Label Content="Progress" Margin="10"/>
+            <ProgressBar Value="{Binding Progress.Value,Mode=OneWay}" Margin="10"/>
+            <Label Content="Random Output" Margin="10"/>
+            <TextBlock Text="{Binding Output.Value,Mode=OneWay}" Margin="10"/>
+            <Label Content="Completed" Margin="10"/>
+            <TextBlock Text="{Binding Completed.Value,Mode=OneWay}" Margin="10"/>
+        </UniformGrid>
+
+
+</UserControl>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace System.ComponentModel.Custom.Generic
+namespace BackgroundWorkerExtended
 {
 
     enum WorkerState { Stopped = 2, Running = 1, Paused = 0 }

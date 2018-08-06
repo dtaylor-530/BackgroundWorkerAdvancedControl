@@ -12,7 +12,7 @@ using System.ComponentModel.Custom.Generic;
 namespace DemoApp
 {
 
-    public  class MainWindowViewModel
+    public  class MainViewModel
     {
 
         //public BackgroundWorkerEx<WorkerArgument> Worker { get; set; }
@@ -25,7 +25,7 @@ namespace DemoApp
         private static int iterations = 10;
         public int Iterations { get { return iterations; } }
 
-        public MainWindowViewModel()
+        public MainViewModel()
         {
            var Worker = new BackgroundWorkerEx<WorkerArgument>(10, MainWork, PreliminaryWork,  onProgressChanged: _backgroundWorker_ProgressChanged, onFinished: _backgroundWorker_RunWorkerCompleted) ;
             WorkerViewModel = new WorkerViewModel<WorkerArgument>(Worker);

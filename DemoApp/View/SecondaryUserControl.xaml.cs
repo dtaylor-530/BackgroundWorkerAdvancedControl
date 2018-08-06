@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Custom.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,25 +16,14 @@ using System.Windows.Shapes;
 namespace DemoApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SecondaryUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SecondaryUserControl : UserControl
     {
-
-        public MainWindow()
+        public SecondaryUserControl()
         {
             InitializeComponent();
-
-
+            this.DataContext = new SecondaryViewModel();
         }
-
-
-
     }
-
-
-
-
-
 }
-
