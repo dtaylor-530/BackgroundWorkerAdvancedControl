@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ex="clr-namespace:ReactiveAsyncWorker;assembly=ReactiveAsyncWorker"
+                    xmlns:utility="clr-namespace:UtilityWpf.View;assembly=UtilityWpf.View"
+    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary  Source="/UtilityWpf.View;component/Themes/ProgressBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate  x:Key="ProgressWorkerItemDataTemplate" DataType="{x:Type ex:ProgressWorkerItem}">
+
+        <Grid Width="130" Height="50" Background="LightGray" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Margin="0,0,2,0" Background="Gray"  HorizontalAlignment="Left" >
+                <Viewbox>
+                    <StackPanel>
+                        <TextBlock Padding="10" Text="{Binding Key,Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" />
+
+                    </StackPanel>
+
+                </Viewbox>
+            </Grid>
+            <!--<TextBlock Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" FontSize="16" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Description}" TextWrapping="Wrap"/>-->
+            <!--<ContentPresenter Grid.Row="0"  Grid.Column="1" Content="{Binding Progress.Value,Mode=OneWay}"></ContentPresenter>-->
+            <!--<ContentPresenter Grid.Row="0"  Grid.Column="1" Content="{Binding Result.Value,Mode=OneWay}"></ContentPresenter>-->
+            <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ProgressPercent.Value,Mode=OneWay}"></TextBlock>-->
+            <TextBlock Padding="1" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProgressPercent.Value,Mode=OneWay}"></TextBlock>
+            <ProgressBar Width="60" Grid.Column="1" Padding="10"  Grid.Row="1" Style="{StaticResource ProgressBar}" HorizontalAlignment="Stretch"  Value="{Binding ProgressPercent.Value,Mode=OneWay}"/>
+
+        </Grid>
+
+    </DataTemplate>
+
+
+    <DataTemplate  x:Key="ProgressWorkerItemDataTemplate2" DataType="{x:Type ex:ProgressWorkerItem}">
+
+        <Grid Width="130" Height="50" Background="LightGray" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Margin="0,0,2,0" Background="Gray"  HorizontalAlignment="Left" >
+                <Viewbox>
+                    <StackPanel>
+                        <TextBlock Padding="10" Text="{Binding Key,Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" />
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+
+            <TextBlock Padding="1" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProgressPercent.Value,Mode=OneWay}"></TextBlock>
+            <TextBlock Padding="1" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Output,Mode=OneWay}"></TextBlock>
+
+        </Grid>
+    </DataTemplate>
+  
+
+</ResourceDictionary>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Generic BackgroundWorker\System.ComponentModel.Custom.Generic\GenericBackgroundWorker.csproj" />
+    <PackageReference Include="UtilityEnum" Version="1.0.8-alpha" />
   </ItemGroup>
 
   <ItemGroup>

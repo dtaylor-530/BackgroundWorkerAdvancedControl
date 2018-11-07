@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Custom.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,24 +27,24 @@ namespace DemoApp
         {
             InitializeComponent();
             windowViewModel = new MainViewModel();
-            windowViewModel.Progress += ProgressChanged;
-            windowViewModel.Clear += Clear;
+            //windowViewModel.Progress += ProgressChanged;
+            //windowViewModel.Clear += Clear;
             this.DataContext = windowViewModel;
 
         }
 
-        private void Clear(object sender, EventArgs e)
-        {
+        //private void Clear(object sender, EventArgs e)
+        //{
 
-            MainCanvas.Children.Clear();
+        //    MainCanvas.Children.Clear();
 
-        }
+        //}
 
 
-        private void ProgressChanged(object sender, ProgressChangedEventArgs<WorkerArgument> e)
-        {
-            FireflyHelper.Add(MainCanvas, e.UserState.Rand);
-        }
+        //private void ProgressChanged(object sender, ProgressChangedEventArgs<WorkerArgument> e)
+        //{
+        //    FireflyHelper.Add(MainCanvas, e.UserState.Rand);
+        //}
 
 
 

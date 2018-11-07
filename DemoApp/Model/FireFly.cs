@@ -21,18 +21,16 @@ namespace DemoApp
 
     public static class FireflyHelper
     {
-        private static Random Randomer = new Random();
+        //private static Random Randomer = new Random();
 
         public static void Add(Canvas canvas,double opacity=0)
         {
-            Firefly CurrentFirefly = new Firefly();
+            Firefly CurrentFirefly = new Firefly(opacity);
             //CurrentFirefly.Speed = Randomer.Next(1, 3);
-            CurrentFirefly.Body = new Ellipse();
-            CurrentFirefly.Body.Margin = new Thickness(Randomer.Next(10, (int)canvas.ActualWidth - 10),
-                                                       Randomer.Next(10, (int)canvas.ActualHeight - 10),
+            CurrentFirefly.Body.Margin = new Thickness(StrongRandom.Next(10, (int)canvas.ActualWidth - 10),
+                                                       StrongRandom.Next(10, (int)canvas.ActualHeight - 10),
                                                        0, 0);
             CurrentFirefly.Body.Fill = Brushes.Black;
-            CurrentFirefly.Body.Opacity = opacity ;
             CurrentFirefly.Body.Height = canvas.ActualHeight / 4;
             CurrentFirefly.Body.Width = 1.5 * CurrentFirefly.Body.Height;
             canvas.Children.Add(CurrentFirefly.Body);
@@ -45,7 +43,12 @@ namespace DemoApp
 
     class Firefly
     {
-        public Ellipse Body { get; set; }
+        public Firefly (double opacity)
+        {
+            Body = new Ellipse { Opacity =opacity};
+        }
+
+        public Ellipse Body { get; }
         //public int Speed { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="DemoApp.TPLUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DemoApp"
+             mc:Ignorable="d" 
+             xmlns:control="clr-namespace:ReactiveAsyncWorkerWpf;assembly=ReactiveAsyncWorkerWpf"
+             xmlns:utility="clr-namespace:UtilityWpf;assembly=UtilityWpf.Common"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+        <UserControl.Resources >
+            <utility:CountToBooleanConverter x:Key="zerotob"></utility:CountToBooleanConverter>
+        </UserControl.Resources>
+        <DockPanel>
+
+            <ToolBar DockPanel.Dock="Top">
+                <Button Command="{Binding RestartCommand}" IsEnabled="False" Content="Restart" ></Button>
+            </ToolBar>
+
+
+            <control:TPLQueueStringControl DockPanel.Dock="Top" Task="Item2"  Key="Item1" Name="bg" NewItem="{Binding NewItem,Mode=OneWay}" >
+            </control:TPLQueueStringControl>
+
+            <!--<ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding ElementName=bg, Path=ItemsSink}"></ItemsControl>-->
+        </DockPanel>
+
+</UserControl>

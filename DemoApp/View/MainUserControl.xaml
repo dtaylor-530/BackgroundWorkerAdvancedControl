@@ -3,88 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wcontrol="clr-namespace:BackgroundWorkerControl.Controls;assembly=BackgroundWorkerControl"
-
+              xmlns:control="clr-namespace:ReactiveAsyncWorkerWpf;assembly=ReactiveAsyncWorkerWpf"
+             xmlns:utility="clr-namespace:UtilityWpf;assembly=UtilityWpf.Common"
              xmlns:local="clr-namespace:DemoApp"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources >
+        <utility:CountToBooleanConverter x:Key="zerotob"></utility:CountToBooleanConverter>
+    </UserControl.Resources>
     <DockPanel>
-        <!--<bwuc:WorkerControl DockPanel.Dock="Top" Height="30">
 
-        </bwuc:WorkerControl>-->
-        <ToolBar DockPanel.Dock="Top"  Height="45" Margin="0">
-
-            <wcontrol:WorkerControl DataContext="{Binding WorkerViewModel}" WorkerState="{Binding State,Mode=TwoWay}"
-                                    Delay="{Binding Delay,Mode=TwoWay}"
-                                     Value="{Binding Progress}" 
-                                  />
-
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="{Binding RestartCommand}" Content="Restart" IsEnabled="{Binding ElementName=bg, Path=ItemsSource.Count,Converter={StaticResource zerotob}}"></Button>
         </ToolBar>
 
 
-
-
-        <StatusBar   DockPanel.Dock="Bottom"     />
-
-        <!--<StatusBarItem >
-                <StatusBarItem.Resources>
-                    -->
-        <!-- Built in Converter -->
-        <!--
-                    <BooleanToVisibilityConverter x:Key="BoolToVis" />
-                </StatusBarItem.Resources>
-             
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-    
-
-                <StatusBarItem Grid.Column="0">
-                    <TextBlock Name="lblProgressStatus" Margin="2">00:00:00</TextBlock>
-                </StatusBarItem>
-                    <StatusBarItem Grid.Column="1">
-            <ProgressBar Name="ProgressBar" 
-                             Value="{Binding CurrentProgress, Mode=OneWay}" 
-                             Visibility="{Binding IsBusy, Mode=OneWay,Converter={StaticResource BoolToVis} }"
-                             HorizontalAlignment="Center" 
-                             Height="26" Margin="2"
-                             VerticalAlignment="Center"
-                             Width="200"/>
-            </StatusBarItem>
-                    <StatusBarItem  Grid.Column="2">
-                 -->
-        <!--<ruben:AnimatableButton/>
-            </StatusBarItem>
-            </Grid>
-            </StatusBarItem>
-       
-       
-        </StatusBar>
+        <control:BackgroundWorkerQueueControl DockPanel.Dock="Top"  x:Name="bg"  NewItem="{Binding NewItem,Mode=OneWay}">
+        </control:BackgroundWorkerQueueControl>
         
-        <StatusBar  DockPanel.Dock="Bottom"  >
-
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
-        </StatusBar>-->
-
-        <Canvas x:Name="MainCanvas" DockPanel.Dock="Top" >
-
-        </Canvas>
-
-
-
-
-
+        <!--<ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding ElementName=bg, Path=ItemsSink}"> </ItemsControl>-->
     </DockPanel>
 </UserControl>

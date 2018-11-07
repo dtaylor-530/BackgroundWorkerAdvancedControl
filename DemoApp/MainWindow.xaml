@@ -12,16 +12,16 @@
         Title="MainWindow" >
 
     <TabControl>
-        <TabItem Header="Main">
 
+        <TabItem Header="TPL">
+            <local:TPLUserControl></local:TPLUserControl>
+        </TabItem>
+        <TabItem Header="Main">
             <local:MainUserControl></local:MainUserControl>
         </TabItem>
         <TabItem Header="Secondary">
-
             <local:SecondaryUserControl></local:SecondaryUserControl>
         </TabItem>
-
-
     </TabControl>
-
+    
 </Window>

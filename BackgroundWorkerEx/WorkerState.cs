@@ -6,27 +6,27 @@ using System.Windows.Data;
 namespace BackgroundWorkerWrapper
 {
 
-    public enum WorkerState { Stopped = 2, Running = 1, Paused = 0 }
+    //public enum UtilityEnum.ProcessState { Stopped = 2, Running = 1, Paused = 0 }
 
 
 
-    static class Converter
-    {
+    //static class Converter
+    //{
 
-        public static WorkerState Main(bool? b)
-        {
-            if (b == true)
-                return WorkerState.Running;
-            else if (b == false)
-                return WorkerState.Paused;
-            else if (b == null)
-                return WorkerState.Stopped;
-            else
-                throw new ArgumentOutOfRangeException("argument for converter should be true, false or null");
+    //    public static UtilityEnum.ProcessState Main(bool? b)
+    //    {
+    //        if (b == true)
+    //            return UtilityEnum.ProcessState.Running;
+    //        else if (b == false)
+    //            return UtilityEnum.ProcessState.Paused;
+    //        else if (b == null)
+    //            return UtilityEnum.ProcessState.Stopped;
+    //        else
+    //            throw new ArgumentOutOfRangeException("argument for converter should be true, false or null");
 
-        }
+    //    }
 
-    }
+    //}
 
 
     //[ValueConversion(typeof(bool), typeof(bool))]

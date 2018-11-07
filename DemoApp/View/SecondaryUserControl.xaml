@@ -3,31 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-            xmlns:view="clr-namespace:BackgroundWorkerObservableView;assembly=BackgroundWorkerObservableView"
-        
-             xmlns:local="clr-namespace:DemoApp"
-
+            xmlns:control="clr-namespace:ReactiveAsyncWorkerWpf;assembly=ReactiveAsyncWorkerWpf"
+xmlns:utility="clr-namespace:UtilityWpf;assembly=UtilityWpf.Common"
+             xmlns:c="ut"
              mc:Ignorable="d" 
              d:DesignHeight="130" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-     
-        </Grid.RowDefinitions>
-        <UniformGrid Rows="1">
-            <Button Width="50" Margin="5" Content="Run"
-                           Command="{Binding RunCommand}"
-                CommandParameter="true"
-                      >
-            </Button>
-            <TextBlock Text="{Binding Iterations}">
-                
-            </TextBlock>
-        </UniformGrid>
 
-        <Viewbox Grid.Row="1" >
-            <view:WorkerQueueUserControl DataContext="{Binding  WorkerQueueVM}"/>
-        </Viewbox>
-    </Grid>
+    <UserControl.Resources >
+        <utility:CountToBooleanConverter x:Key="zerotob"></utility:CountToBooleanConverter>
+    </UserControl.Resources>
+    <DockPanel>
+
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="{Binding RestartCommand}" Content="Restart" IsEnabled="{Binding ElementName=bg, Path=ItemsSource.Count,Converter={StaticResource zerotob}}"></Button>
+        </ToolBar>
+
+
+        <control:FileDownloaderQueueControl DockPanel.Dock="Top" Path="Item2"  Uri="Item1" Name="bg" NewItem="{Binding NewItem,Mode=OneWay}" >
+        </control:FileDownloaderQueueControl>
+
+        <!--<ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding ElementName=bg, Path=ItemsSink}"></ItemsControl>-->
+    </DockPanel>
 </UserControl>

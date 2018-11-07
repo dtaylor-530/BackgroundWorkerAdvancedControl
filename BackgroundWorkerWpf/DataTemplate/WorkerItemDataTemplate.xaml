@@ -1,0 +1,61 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ex="clr-namespace:ReactiveAsyncWorker;assembly=ReactiveAsyncWorker"
+                    xmlns:utility="clr-namespace:UtilityWpf;assembly=UtilityWpf.Common"
+            
+    >
+    <utility:FirstLineConverter x:Key="flc"></utility:FirstLineConverter>
+
+    <DataTemplate  x:Key="WorkerItemDataTemplate" >
+        <!--DataType="{x:Type ex:WorkerItem}"-->
+        <Grid Width="130" Height="50" Background="LightGray" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Margin="0,0,2,0" Background="Gray"  HorizontalAlignment="Left" >
+                <Viewbox>
+                    <StackPanel>
+                        <TextBlock Padding="10" Text="{Binding Key,Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center"   />
+                        <!--<Ellipse Fill="Red" Height="20" Width="10"></Ellipse>-->
+                    </StackPanel>
+
+                </Viewbox>
+            </Grid>
+
+        </Grid>
+
+    </DataTemplate>
+
+
+    <DataTemplate  x:Key="WorkerItemDataTemplate2" >
+        <!--DataType="{x:Type ex:WorkerItem}"-->
+        <Grid Width="130" Height="50" Background="LightGray" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Margin="0,0,2,0" Background="Gray"  HorizontalAlignment="Left" >
+                <Viewbox>
+                    <StackPanel>
+                        <TextBlock Padding="10" Text="{Binding Key,Mode=OneTime}" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                                     </StackPanel>
+                </Viewbox>
+            </Grid>
+            <TextBlock Grid.Column="1" Padding="10" Grid.Row="1" Text="{Binding Output,Mode=OneWay,Converter={StaticResource flc}}" HorizontalAlignment="Center" VerticalAlignment="Center"   />
+
+        </Grid>
+    </DataTemplate>
+
+
+</ResourceDictionary>
